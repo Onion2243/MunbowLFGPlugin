@@ -14,6 +14,7 @@ namespace MunbowLFGPlugin
     {
         private Handlers.player Player;
         private Handlers.NWTLOServer Server;
+        public bool IsNWTLOEnabled = false;
         public static MunbowLFGPlugin Instance;
 
         public static object NWTLOServer { get; internal set; }
@@ -23,7 +24,7 @@ namespace MunbowLFGPlugin
             base.OnEnabled();
             RegisterEvents();
             Instance = this;
-            MunbowLFGPlugin.Instance.Server.IsNWTLOEnabled = true;
+            
         }
 
         public override void OnDisabled()

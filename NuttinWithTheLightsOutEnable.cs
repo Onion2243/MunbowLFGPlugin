@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CommandSystem;
 using RemoteAdmin;
 using Exiled.Permissions.Extensions;
+using Exiled.API.Features.Items;
 
 
 
@@ -20,10 +21,9 @@ namespace MunbowLFGPlugin.Commands
         private Handlers.player Player;
         private Handlers.NWTLOServer NWTLOServer;
         public static MunbowLFGPlugin Instance;
-        
-        
-        
 
+        public MunbowLFGPlugin mainplugin;
+        
         public string Command { get; } = "EnableNWTLO";
 
         public string[] Aliases { get; } = { "EnableNWTLO" } ;
@@ -32,6 +32,8 @@ namespace MunbowLFGPlugin.Commands
 
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
+
+            mainplugin = new MunbowLFGPlugin();
             
             if (sender is PlayerCommandSender player && !sender.CheckPermission("owner"))
             {
@@ -39,9 +41,8 @@ namespace MunbowLFGPlugin.Commands
 
                 Player = new Handlers.player();
                 NWTLOServer = new Handlers.NWTLOServer();
-
+                mainplugin.IsNWTLOEnabled = true;
                 
-
                 return true;
 
             }

@@ -17,11 +17,15 @@ namespace MunbowLFGPlugin.Handlers
 
     class NWTLOServer
     {
-        public bool IsNWTLOEnabled = false;
+        public MunbowLFGPlugin mainplugin;
+        
+
+        public static NWTLOServer Instance;
         Random rd = new Random();
        public void OnRoundStarted()
         {
-            if(IsNWTLOEnabled == true)
+            mainplugin = new MunbowLFGPlugin();
+            if(mainplugin.IsNWTLOEnabled == true)
             {
                 
                 foreach (Player1 player in Player1.List)

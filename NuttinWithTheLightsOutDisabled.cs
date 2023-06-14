@@ -15,7 +15,9 @@ namespace MunbowLFGPlugin.Commands
 
         private Handlers.player Player;
         public Handlers.NWTLOServer Server;
-        
+
+        public MunbowLFGPlugin mainplugin;
+
 
         public string Command { get; } = "DisableNWTLO";
 
@@ -25,16 +27,17 @@ namespace MunbowLFGPlugin.Commands
 
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
+            mainplugin = new MunbowLFGPlugin();
+
             if (sender is PlayerCommandSender player && !sender.CheckPermission("owner"))
             {
+                
                 response = "You Have Disabled The Nutting With The Lights Out Gamemode";
 
                 Player = new Handlers.player();
                 Server = new Handlers.NWTLOServer();
 
-                 
-
-                
+                mainplugin.IsNWTLOEnabled = false;
 
                 return true;
 
